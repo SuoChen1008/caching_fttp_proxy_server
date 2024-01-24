@@ -1,0 +1,120 @@
+====================================================================================
+GET - Cache Never Expires
+
+http://info.cern.ch
+====================================================================================
+45547e3f-32d9-4ce2-ae11-03618019d947: "GET http://info.cern.ch/ HTTP/1.1" from 107.15.131.234 @ Tue Feb 28 04:17:33 2023
+45547e3f-32d9-4ce2-ae11-03618019d947: not in cache
+45547e3f-32d9-4ce2-ae11-03618019d947: Requesting "GET http://info.cern.ch/ HTTP/1.1" from info.cern.ch
+45547e3f-32d9-4ce2-ae11-03618019d947: Received "HTTP/1.1 200 OK" from info.cern.ch
+45547e3f-32d9-4ce2-ae11-03618019d947: [INFO] ETag: "286-4f1aadb3105c0"
+45547e3f-32d9-4ce2-ae11-03618019d947: cached, never expires
+45547e3f-32d9-4ce2-ae11-03618019d947: Responding "HTTP/1.1 200 OK"
+d0a69f0b-e4b4-4ee7-8821-4b776977eaf0: "GET http://info.cern.ch/ HTTP/1.1" from 107.15.131.234 @ Tue Feb 28 04:18:11 2023
+d0a69f0b-e4b4-4ee7-8821-4b776977eaf0: in cache, valid
+d0a69f0b-e4b4-4ee7-8821-4b776977eaf0: Responding "HTTP/1.1 200 OK"
+====================================================================================
+GET - max-age
+
+Local Flask Server, responding with max-age=10
+====================================================================================
+3524977a-a984-4963-bdde-219802845547: "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from 107.15.131.234 @ Wed Mar 01 01:21:08 2023
+3524977a-a984-4963-bdde-219802845547: not in cache
+3524977a-a984-4963-bdde-219802845547: Requesting "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from y9v2z.mocklab.io
+3524977a-a984-4963-bdde-219802845547: Received "HTTP/1.1 200 OK" from y9v2z.mocklab.io
+3524977a-a984-4963-bdde-219802845547: [INFO] Cache-Control: max-age=10
+3524977a-a984-4963-bdde-219802845547: cached, expires at Tue Feb 28 20:21:18 2023 EST
+3524977a-a984-4963-bdde-219802845547: Responding "HTTP/1.1 200 OK"
+629afcf6-1404-48b3-94f6-2039f0127133: "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from 107.15.131.234 @ Wed Mar 01 01:21:10 2023
+629afcf6-1404-48b3-94f6-2039f0127133: in cache, valid
+629afcf6-1404-48b3-94f6-2039f0127133: Responding "HTTP/1.1 200 OK"
+a4ec4305-7399-4c24-8425-1dbf7e7791f9: "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from 107.15.131.234 @ Wed Mar 01 01:21:18 2023
+a4ec4305-7399-4c24-8425-1dbf7e7791f9: in cache, valid
+a4ec4305-7399-4c24-8425-1dbf7e7791f9: Responding "HTTP/1.1 200 OK"
+78cfa8b1-7bc2-400e-a60c-978251df7ecd: "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from 107.15.131.234 @ Wed Mar 01 01:21:30 2023
+78cfa8b1-7bc2-400e-a60c-978251df7ecd: in cache, but expired at Tue Feb 28 20:21:18 2023 EST
+78cfa8b1-7bc2-400e-a60c-978251df7ecd: Requesting "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from y9v2z.mocklab.io
+78cfa8b1-7bc2-400e-a60c-978251df7ecd: Received "HTTP/1.1 200 OK" from y9v2z.mocklab.io
+78cfa8b1-7bc2-400e-a60c-978251df7ecd: [INFO] Cache-Control: max-age=10
+78cfa8b1-7bc2-400e-a60c-978251df7ecd: cached, expires at Tue Feb 28 20:21:40 2023 EST
+78cfa8b1-7bc2-400e-a60c-978251df7ecd: Responding "HTTP/1.1 200 OK"
+====================================================================================
+GET - no cache
+
+app.mocklab.io, responding with no-cache
+====================================================================================
+ffcbb410-b587-49fa-bacc-ea924b93f8aa: "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from 107.15.131.234 @ Wed Mar 01 01:19:28 2023
+ffcbb410-b587-49fa-bacc-ea924b93f8aa: not in cache
+ffcbb410-b587-49fa-bacc-ea924b93f8aa: Requesting "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from y9v2z.mocklab.io
+ffcbb410-b587-49fa-bacc-ea924b93f8aa: Received "HTTP/1.1 200 OK" from y9v2z.mocklab.io
+ffcbb410-b587-49fa-bacc-ea924b93f8aa: [INFO] Cache-Control: no-cache
+ffcbb410-b587-49fa-bacc-ea924b93f8aa: cached, but requires re-validation
+ffcbb410-b587-49fa-bacc-ea924b93f8aa: Responding "HTTP/1.1 200 OK"
+6595c6b3-ca22-43f7-a1f4-a84ae88e42ad: "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from 107.15.131.234 @ Wed Mar 01 01:19:33 2023
+6595c6b3-ca22-43f7-a1f4-a84ae88e42ad: in cache, but expired at Tue Feb 28 20:19:28 2023 EST
+6595c6b3-ca22-43f7-a1f4-a84ae88e42ad: Requesting "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from y9v2z.mocklab.io
+6595c6b3-ca22-43f7-a1f4-a84ae88e42ad: Received "HTTP/1.1 200 OK" from y9v2z.mocklab.io
+6595c6b3-ca22-43f7-a1f4-a84ae88e42ad: [INFO] Cache-Control: no-cache
+6595c6b3-ca22-43f7-a1f4-a84ae88e42ad: cached, but requires re-validation
+6595c6b3-ca22-43f7-a1f4-a84ae88e42ad: Responding "HTTP/1.1 200 OK"
+8f0247b8-0c2e-45c4-8058-f548f4775803: "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from 107.15.131.234 @ Wed Mar 01 01:19:34 2023
+8f0247b8-0c2e-45c4-8058-f548f4775803: in cache, but expired at Tue Feb 28 20:19:33 2023 EST
+8f0247b8-0c2e-45c4-8058-f548f4775803: Requesting "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from y9v2z.mocklab.io
+8f0247b8-0c2e-45c4-8058-f548f4775803: Received "HTTP/1.1 200 OK" from y9v2z.mocklab.io
+8f0247b8-0c2e-45c4-8058-f548f4775803: [INFO] Cache-Control: no-cache
+8f0247b8-0c2e-45c4-8058-f548f4775803: cached, but requires re-validation
+8f0247b8-0c2e-45c4-8058-f548f4775803: Responding "HTTP/1.1 200 OK"
+====================================================================================
+GET - no store
+
+Local Flask Server, responding with no-store
+====================================================================================
+36fe3ca0-e003-43d6-9b6e-7205c172a784: "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from 107.15.131.234 @ Wed Mar 01 01:31:43 2023
+36fe3ca0-e003-43d6-9b6e-7205c172a784: not in cache
+36fe3ca0-e003-43d6-9b6e-7205c172a784: Requesting "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from y9v2z.mocklab.io
+36fe3ca0-e003-43d6-9b6e-7205c172a784: Received "HTTP/1.1 200 OK" from y9v2z.mocklab.io
+36fe3ca0-e003-43d6-9b6e-7205c172a784: not cacheable, "no-store" founded.
+36fe3ca0-e003-43d6-9b6e-7205c172a784: Responding "HTTP/1.1 200 OK"
+80b6dbc2-4035-4f44-af3c-01b8dfe4d2f7: "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from 107.15.131.234 @ Wed Mar 01 01:31:44 2023
+80b6dbc2-4035-4f44-af3c-01b8dfe4d2f7: not in cache
+80b6dbc2-4035-4f44-af3c-01b8dfe4d2f7: Requesting "GET http://y9v2z.mocklab.io/json/1 HTTP/1.1" from y9v2z.mocklab.io
+80b6dbc2-4035-4f44-af3c-01b8dfe4d2f7: Received "HTTP/1.1 200 OK" from y9v2z.mocklab.io
+80b6dbc2-4035-4f44-af3c-01b8dfe4d2f7: not cacheable, "no-store" founded.
+80b6dbc2-4035-4f44-af3c-01b8dfe4d2f7: Responding "HTTP/1.1 200 OK"
+====================================================================================
+GET - Chunked
+
+http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx
+====================================================================================
+40b48e75-0c89-46b7-80ea-9eed13cee72d: "GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1" from 107.15.131.234 @ Tue Feb 28 04:26:25 2023
+40b48e75-0c89-46b7-80ea-9eed13cee72d: not in cache
+40b48e75-0c89-46b7-80ea-9eed13cee72d: Requesting "GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1" from www.httpwatch.com
+(Because the response is encoded using chunked encoding, 
+each time the proxy server receives a chunk, 
+it immediately forwards it to the client. 
+Therefore, no response logging occurs at this point.)
+====================================================================================
+CONNECT
+
+https://www.google.com
+====================================================================================
+b7ac446b-8589-432b-a51d-6db5f7e57796: "CONNECT www.google.com:443 HTTP/1.1" from 107.15.131.234 @ Tue Feb 28 04:35:03 2023
+b7ac446b-8589-432b-a51d-6db5f7e57796: Responding "HTTP/1.1 200 Connection Established"
+b7ac446b-8589-432b-a51d-6db5f7e57796: Tunnel closed
+====================================================================================
+POST
+
+http://httpbin.org/forms/post
+====================================================================================
+fb7660b5-6185-4ab7-919d-26020d2712f5: "GET http://httpbin.org/forms/post HTTP/1.1" from 107.15.131.234 @ Tue Feb 28 04:49:57 2023
+fb7660b5-6185-4ab7-919d-26020d2712f5: not in cache
+fb7660b5-6185-4ab7-919d-26020d2712f5: Requesting "GET http://httpbin.org/forms/post HTTP/1.1" from httpbin.org
+fb7660b5-6185-4ab7-919d-26020d2712f5: Received "HTTP/1.1 200 OK" from httpbin.org
+fb7660b5-6185-4ab7-919d-26020d2712f5: cached, never expires
+fb7660b5-6185-4ab7-919d-26020d2712f5: Responding "HTTP/1.1 200 OK"
+6de3cce9-3514-402c-ad35-f0eda350d08e: "POST http://httpbin.org/post HTTP/1.1" from 107.15.131.234 @ Tue Feb 28 04:50:05 2023
+6de3cce9-3514-402c-ad35-f0eda350d08e: "POST http://httpbin.org/post HTTP/1.1" from 107.15.131.234 @ Tue Feb 28 04:50:05 2023
+6de3cce9-3514-402c-ad35-f0eda350d08e: Responding "HTTP/1.1 200 OK"
+bfd6da6b-8578-42bd-b8cd-7e7d89a6d939: "POST http://httpbin.org/post HTTP/1.1" from 107.15.131.234 @ Tue Feb 28 04:50:16 2023
+bfd6da6b-8578-42bd-b8cd-7e7d89a6d939: "POST http://httpbin.org/post HTTP/1.1" from 107.15.131.234 @ Tue Feb 28 04:50:16 2023
+bfd6da6b-8578-42bd-b8cd-7e7d89a6d939: Responding "HTTP/1.1 200 OK"

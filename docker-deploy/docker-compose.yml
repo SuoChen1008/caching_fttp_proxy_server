@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  http_cache_proxy:
+    build: .
+    ports:
+      - "12345:12345"

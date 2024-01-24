@@ -1,0 +1,30 @@
+1.  Use smart pointers instead of raw pointers:
+    The host_info_list member variable in tcp_server class is a raw pointer,
+    which could potentially cause memory leaks if not properly managed.
+    Using a smart pointer such as std::unique_ptr or std::shared_ptr would ensure that the memory is automatically managed.
+2.  The use of `accept()` function, especially under high load conditions will be a performance bottleneck for the server.
+    When multiple clients are waiting for connections,
+    the `accept()` function can only process one connection request at a time,
+    which can block the main thread and affect the performance of the entire program.
+    Operating system mechanisms such as epoll, select, and poll can be used to implement asynchronous I/O.
+3.  In the Server class, the `start()` function uses an infinite loop,
+    which causes the function to block indefinitely until the server is closed.
+    This prevents the Server object's destructor from being called, which may result in resource leaks.
+    To solve this problem, the start function can be changed to a loop that can be controlled so that it can exit normally when needed.
+4.  In the Server class, the `handleClient()` function handles client requests synchronously,
+    meaning that while one client connection is being handled,
+    other client connections must wait until the previous connection is completed.
+    This approach can cause performance issues, especially under high loads.
+    This problem can be addressed by assigning client connections to a thread pool to allow for concurrent
+    handling of multiple client connections.
+    This will greatly improve the server's performance and concurrency capabilities.
+5.  During development, it's important to ensure that data is accessed in a thread-safe manner to avoid race conditions 
+    and undefined behavior. One way to achieve thread safety is by using a lock_guard, which provides automatic locking and 
+    unlocking of a mutex during scope. Using a lock_guard helps to prevent deadlock and ensures that the mutex is unlocked 
+    even if an exception is thrown. Therefore, it's recommended to use lock_guard when working with shared data in a multithreaded 
+    environment.
+6. In modern C++, raw pointers can lead to memory leaks and undefined behavior if not properly managed. Unique pointers 
+   provide automatic memory management by taking ownership of dynamically allocated memory and automatically releasing it when 
+   the unique pointer goes out of scope. Unique pointers ensure that only one pointer is pointing to the memory at a time, and 
+   the memory is released when the pointer is destroyed. Therefore, it's recommended to use unique pointers instead of raw pointers 
+   to avoid memory leaks and undefined behavior.
